@@ -1,5 +1,7 @@
 package io.diaz.pinoystack.controllers;
 
+import io.diaz.pinoystack.dto.AuthenticationResponse;
+import io.diaz.pinoystack.dto.LoginRequest;
 import io.diaz.pinoystack.dto.RegisterRequest;
 import io.diaz.pinoystack.services.AuthService;
 import lombok.AllArgsConstructor;
@@ -24,5 +26,10 @@ public class AuthController {
     public ResponseEntity<String> verifyAccount(@PathVariable String token) {
         authService.verifyAccount(token);
         return new ResponseEntity<>("Account successfully activated", HttpStatus.OK);
+    }
+
+    @PostMapping("/login")
+    public AuthenticationResponse login(@RequestBody LoginRequest loginRequest) {
+        return authService.login(loginRequest);
     }
 }
