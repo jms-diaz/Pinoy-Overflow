@@ -1,6 +1,7 @@
 package io.diaz.pinoystack.services;
 
 import io.diaz.pinoystack.dto.RegisterRequest;
+import io.diaz.pinoystack.exceptions.PinoyStackException;
 import io.diaz.pinoystack.models.NotificationEmail;
 import io.diaz.pinoystack.models.User;
 import io.diaz.pinoystack.models.VerificationToken;
@@ -11,7 +12,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import javax.validation.constraints.NotBlank;
 import java.time.Instant;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -49,5 +52,20 @@ public class AuthService {
         verificationTokenRepo.save(verificationToken);
         return token;
 
+    }
+
+    public void verifyAccount(String token) {
+        Optional<VerificationToken> verificationToken = verificationTokenRepo.findByToken(token);
+        verificationToken.orElseThrow(() -> new PinoyStackException("Invalid token"));
+        fetchUserAndEnable(verificationToken.get());
+    }
+
+    @Transactional
+    void fetchUserAndEnable(VerificationToken verificationToken) {
+        @NotBlank(message = "Username is required")
+        String username = verificationToken.getUser().getUsername();
+        User user = userRepo.findByUsername(username).orElseThrow(() -> new PinoyStackException("User " + username + "is not found"));
+        user.setEnabled(true);
+        userRepo.save(user);
     }
 }
