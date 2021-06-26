@@ -1,6 +1,8 @@
 package io.diaz.pinoystack.services;
 
 import io.diaz.pinoystack.dto.SubforumDto;
+import io.diaz.pinoystack.exceptions.PinoyStackException;
+import io.diaz.pinoystack.mapper.SubforumMapper;
 import io.diaz.pinoystack.models.Subforum;
 import io.diaz.pinoystack.repo.SubforumRepo;
 import lombok.AllArgsConstructor;
@@ -18,10 +20,11 @@ import static java.util.stream.Collectors.toList;
 public class SubforumService {
 
     private final SubforumRepo subforumRepo;
+    private final SubforumMapper subforumMapper;
 
     @Transactional
     public SubforumDto save(SubforumDto subforumDto){
-        Subforum save = subforumRepo.save(mapSubforumDto(subforumDto));
+        Subforum save = subforumRepo.save(subforumMapper.mapDtoToSubforum(subforumDto));
         subforumDto.setId(save.getId());
         return subforumDto;
 
@@ -29,21 +32,15 @@ public class SubforumService {
     
     @Transactional(readOnly = true)
     public List<SubforumDto> getAll() {
-        return subforumRepo.findAll().stream().map(this::mapToDto).collect(toList());
+        return subforumRepo.findAll()
+                .stream()
+                .map(subforumMapper::mapSubforumToDto)
+                .collect(toList());
     }
 
-    private SubforumDto mapToDto(Subforum subforum) {
-        return SubforumDto.builder()
-                .name(subforum.getName())
-                .id(subforum.getId())
-                .numberOfPosts(subforum.getPosts().size())
-                .build();
+    public SubforumDto getSubforum(Long id) {
+        Subforum subforum = subforumRepo.findById(id)
+                .orElseThrow(() -> new PinoyStackException("No forum found with id " + id));
+        return subforumMapper.mapSubforumToDto(subforum);
     }
-
-    private Subforum mapSubforumDto(SubforumDto subforumDto) {
-        return Subforum.builder().name(subforumDto.getName())
-                .description(subforumDto.getDescription())
-                .build();
-    }
-
 }
