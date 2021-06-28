@@ -2,6 +2,7 @@ package io.diaz.pinoystack.services;
 
 import io.diaz.pinoystack.dto.AuthenticationResponse;
 import io.diaz.pinoystack.dto.LoginRequest;
+import io.diaz.pinoystack.dto.RefreshTokenRequest;
 import io.diaz.pinoystack.dto.RegisterRequest;
 import io.diaz.pinoystack.exceptions.PinoyStackException;
 import io.diaz.pinoystack.models.NotificationEmail;
@@ -35,6 +36,7 @@ public class AuthService {
     private final MailService mailService;
     private final AuthenticationManager authenticationManager;
     private final JwtProvider jwtProvider;
+    private final RefreshTokenService refreshTokenService;
 
     @Transactional
     public void signup(RegisterRequest registerRequest) {
@@ -84,7 +86,12 @@ public class AuthService {
                 loginRequest.getUsername(), loginRequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authenticate);
         String token = jwtProvider.generateToken(authenticate);
-        return new AuthenticationResponse(token, loginRequest.getUsername());
+        return AuthenticationResponse.builder()
+                .authenticationToken(token)
+                .refreshToken(refreshTokenService.generateRefreshToken().getToken())
+                .expiresAt(Instant.now().plusMillis(jwtProvider.getExpirationInMillis()))
+                .username(loginRequest.getUsername())
+                .build();
     }
 
     @Transactional(readOnly = true)
@@ -93,5 +100,16 @@ public class AuthService {
                 .getContext().getAuthentication().getPrincipal();
         return userRepo.findByUsername(principal.getUsername())
                 .orElseThrow(() -> new UsernameNotFoundException("Username not found: " + principal.getUsername()));
+    }
+
+    public AuthenticationResponse refreshToken(RefreshTokenRequest refreshTokenRequest) {
+        refreshTokenService.validateRefreshToken(refreshTokenRequest.getRefreshToken());
+        String token = jwtProvider.generateTokenWithUsername(refreshTokenRequest.getUsername());
+        return AuthenticationResponse.builder()
+                .authenticationToken(token)
+                .refreshToken(refreshTokenRequest.getRefreshToken())
+                .expiresAt(Instant.now().plusMillis(jwtProvider.getExpirationInMillis()))
+                .username(refreshTokenRequest.getUsername())
+                .build();
     }
 }
