@@ -1,0 +1,545 @@
+{
+	"info": {
+		"_postman_id": "88f9cf92-324e-4d71-8d58-b846906230c9",
+		"name": "PinoyStack API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"shydiaz\",\r\n    \"email\": \"shy@gmail.com\",\r\n    \"password\": \"akosishy\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2020/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2020",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"shydiaz\",\r\n    \"password\": \"akosishy\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2020/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2020",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST subforum",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzaHlkaWF6In0.TNOL4iavHhfJRh2UJu-ixEQ4oYmvW2qFqmzDC28pGxMBvhwzmv6CNPDXHT9HUUkGrTaUKzZgP-tG0VXEPzLOjNELAkugZt6rQXpDrUfOn4QOMH6XBWbp9DI9jlyuDxWbh0wxrIB6YDO_onFWQqrwiaS-LxnXhf34AxTLF1sTDmMRyDhSO9qZc7ROZFaIymTX4L5PCRfNO7lcWlaHWhb5t441qWSfwgMi9NkFDUTID6KcEHWFawOagts5B2k3QbaGyjBTU2DlRDA-WYc9mZYBYHsaJjUv-h3uDIbtzSQ9FFXBF879FbxR6kLgCc1Gh3za_Fu4VexEzVMECPmxVX0MFA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Spring Boot Forum\",\r\n    \"description\": \"Forum where we talk about spring boot :)\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2020/api/subforum",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2020",
+					"path": [
+						"api",
+						"subforum"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all subforum",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzaHlkaWF6IiwiZXhwIjoxNjI0ODcxNjAyfQ.TPlqwAxZ4f67EmAd67ySTWK4xD9Lw9-Evq0odbPXbONjSQHjCrXOwJTtnK6PzLqJ-6h06mJsIaWhGk3CjZOGqNjckBI3Wp1BysmLupmxKB5omTc_B8WWXgr5ugSpFB9RcHhohraK3CgD8l-ntrlC3koPGf-MEEAgOoxtFknR027007tMjtNkoO3hQTJmLH8ENoYNsEBdQsHKsQt9LQ-4kMZM36wNey0DdbTfzGUMM4DykmTEHssyVOUm4K36KFhipbQuITO9f8y6GSw6T5ljiQQHawf5EwMM2Oql693NIYicy1zpOnwIjAe7QWm3FVf1n79NCfbwPMVV3UIcYMl_Dg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2020/api/subforum",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2020",
+					"path": [
+						"api",
+						"subforum"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET subreddit",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzaHlkaWF6In0.TNOL4iavHhfJRh2UJu-ixEQ4oYmvW2qFqmzDC28pGxMBvhwzmv6CNPDXHT9HUUkGrTaUKzZgP-tG0VXEPzLOjNELAkugZt6rQXpDrUfOn4QOMH6XBWbp9DI9jlyuDxWbh0wxrIB6YDO_onFWQqrwiaS-LxnXhf34AxTLF1sTDmMRyDhSO9qZc7ROZFaIymTX4L5PCRfNO7lcWlaHWhb5t441qWSfwgMi9NkFDUTID6KcEHWFawOagts5B2k3QbaGyjBTU2DlRDA-WYc9mZYBYHsaJjUv-h3uDIbtzSQ9FFXBF879FbxR6kLgCc1Gh3za_Fu4VexEzVMECPmxVX0MFA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2020/api/subforum/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2020",
+					"path": [
+						"api",
+						"subforum",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST post",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzaHlkaWF6In0.TNOL4iavHhfJRh2UJu-ixEQ4oYmvW2qFqmzDC28pGxMBvhwzmv6CNPDXHT9HUUkGrTaUKzZgP-tG0VXEPzLOjNELAkugZt6rQXpDrUfOn4QOMH6XBWbp9DI9jlyuDxWbh0wxrIB6YDO_onFWQqrwiaS-LxnXhf34AxTLF1sTDmMRyDhSO9qZc7ROZFaIymTX4L5PCRfNO7lcWlaHWhb5t441qWSfwgMi9NkFDUTID6KcEHWFawOagts5B2k3QbaGyjBTU2DlRDA-WYc9mZYBYHsaJjUv-h3uDIbtzSQ9FFXBF879FbxR6kLgCc1Gh3za_Fu4VexEzVMECPmxVX0MFA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"subforumName\": \"Spring Boot Forum\",\r\n    \"postName\": \"How to start?\",\r\n    \"url\": \"facebook.com\",\r\n    \"description\": \"how to study angular plsss\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2020/api/posts/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2020",
+					"path": [
+						"api",
+						"posts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all posts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzaHlkaWF6In0.TNOL4iavHhfJRh2UJu-ixEQ4oYmvW2qFqmzDC28pGxMBvhwzmv6CNPDXHT9HUUkGrTaUKzZgP-tG0VXEPzLOjNELAkugZt6rQXpDrUfOn4QOMH6XBWbp9DI9jlyuDxWbh0wxrIB6YDO_onFWQqrwiaS-LxnXhf34AxTLF1sTDmMRyDhSO9qZc7ROZFaIymTX4L5PCRfNO7lcWlaHWhb5t441qWSfwgMi9NkFDUTID6KcEHWFawOagts5B2k3QbaGyjBTU2DlRDA-WYc9mZYBYHsaJjUv-h3uDIbtzSQ9FFXBF879FbxR6kLgCc1Gh3za_Fu4VexEzVMECPmxVX0MFA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2020/api/posts/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2020",
+					"path": [
+						"api",
+						"posts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET post",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzaHlkaWF6In0.TNOL4iavHhfJRh2UJu-ixEQ4oYmvW2qFqmzDC28pGxMBvhwzmv6CNPDXHT9HUUkGrTaUKzZgP-tG0VXEPzLOjNELAkugZt6rQXpDrUfOn4QOMH6XBWbp9DI9jlyuDxWbh0wxrIB6YDO_onFWQqrwiaS-LxnXhf34AxTLF1sTDmMRyDhSO9qZc7ROZFaIymTX4L5PCRfNO7lcWlaHWhb5t441qWSfwgMi9NkFDUTID6KcEHWFawOagts5B2k3QbaGyjBTU2DlRDA-WYc9mZYBYHsaJjUv-h3uDIbtzSQ9FFXBF879FbxR6kLgCc1Gh3za_Fu4VexEzVMECPmxVX0MFA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2020/api/posts/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2020",
+					"path": [
+						"api",
+						"posts",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET post by user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzaHlkaWF6In0.TNOL4iavHhfJRh2UJu-ixEQ4oYmvW2qFqmzDC28pGxMBvhwzmv6CNPDXHT9HUUkGrTaUKzZgP-tG0VXEPzLOjNELAkugZt6rQXpDrUfOn4QOMH6XBWbp9DI9jlyuDxWbh0wxrIB6YDO_onFWQqrwiaS-LxnXhf34AxTLF1sTDmMRyDhSO9qZc7ROZFaIymTX4L5PCRfNO7lcWlaHWhb5t441qWSfwgMi9NkFDUTID6KcEHWFawOagts5B2k3QbaGyjBTU2DlRDA-WYc9mZYBYHsaJjUv-h3uDIbtzSQ9FFXBF879FbxR6kLgCc1Gh3za_Fu4VexEzVMECPmxVX0MFA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2020/api/posts/by-user/shydiaz",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2020",
+					"path": [
+						"api",
+						"posts",
+						"by-user",
+						"shydiaz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET post by subforum",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2020/api/posts/by-subforum/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2020",
+					"path": [
+						"api",
+						"posts",
+						"by-subforum",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST comment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzaHlkaWF6In0.TNOL4iavHhfJRh2UJu-ixEQ4oYmvW2qFqmzDC28pGxMBvhwzmv6CNPDXHT9HUUkGrTaUKzZgP-tG0VXEPzLOjNELAkugZt6rQXpDrUfOn4QOMH6XBWbp9DI9jlyuDxWbh0wxrIB6YDO_onFWQqrwiaS-LxnXhf34AxTLF1sTDmMRyDhSO9qZc7ROZFaIymTX4L5PCRfNO7lcWlaHWhb5t441qWSfwgMi9NkFDUTID6KcEHWFawOagts5B2k3QbaGyjBTU2DlRDA-WYc9mZYBYHsaJjUv-h3uDIbtzSQ9FFXBF879FbxR6kLgCc1Gh3za_Fu4VexEzVMECPmxVX0MFA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"postId\": 4,\r\n    \"text\": \"There is a username hehe\",\r\n    \"username\": \"shydiaz\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2020/api/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2020",
+					"path": [
+						"api",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET comment by user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzaHlkaWF6In0.TNOL4iavHhfJRh2UJu-ixEQ4oYmvW2qFqmzDC28pGxMBvhwzmv6CNPDXHT9HUUkGrTaUKzZgP-tG0VXEPzLOjNELAkugZt6rQXpDrUfOn4QOMH6XBWbp9DI9jlyuDxWbh0wxrIB6YDO_onFWQqrwiaS-LxnXhf34AxTLF1sTDmMRyDhSO9qZc7ROZFaIymTX4L5PCRfNO7lcWlaHWhb5t441qWSfwgMi9NkFDUTID6KcEHWFawOagts5B2k3QbaGyjBTU2DlRDA-WYc9mZYBYHsaJjUv-h3uDIbtzSQ9FFXBF879FbxR6kLgCc1Gh3za_Fu4VexEzVMECPmxVX0MFA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2020/api/comments/by-user/shydiaz",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2020",
+					"path": [
+						"api",
+						"comments",
+						"by-user",
+						"shydiaz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET comment by post",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2020/api/comments/by-post/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2020",
+					"path": [
+						"api",
+						"comments",
+						"by-post",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST vote",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzaHlkaWF6In0.TNOL4iavHhfJRh2UJu-ixEQ4oYmvW2qFqmzDC28pGxMBvhwzmv6CNPDXHT9HUUkGrTaUKzZgP-tG0VXEPzLOjNELAkugZt6rQXpDrUfOn4QOMH6XBWbp9DI9jlyuDxWbh0wxrIB6YDO_onFWQqrwiaS-LxnXhf34AxTLF1sTDmMRyDhSO9qZc7ROZFaIymTX4L5PCRfNO7lcWlaHWhb5t441qWSfwgMi9NkFDUTID6KcEHWFawOagts5B2k3QbaGyjBTU2DlRDA-WYc9mZYBYHsaJjUv-h3uDIbtzSQ9FFXBF879FbxR6kLgCc1Gh3za_Fu4VexEzVMECPmxVX0MFA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"voteType\": \"DOWNVOTE\",\r\n    \"postId\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2020/api/votes/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2020",
+					"path": [
+						"api",
+						"votes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST refresh token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refreshToken\": \"b8cf180b-ff6b-4802-8d80-ed906102edbd\",\r\n    \"username\": \"shydiaz\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2020/api/auth/refresh/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2020",
+					"path": [
+						"api",
+						"auth",
+						"refresh",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refreshToken\": \"b8cf180b-ff6b-4802-8d80-ed906102edbd\",\r\n    \"username\": \"shydiaz\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2020/api/auth/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2020",
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "documentation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2020/swagger-ui.html",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2020",
+					"path": [
+						"swagger-ui.html"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
